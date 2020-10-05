@@ -182,6 +182,7 @@ def main():
         add_pipe = False
         rem = []
         for pipe in pipes:
+            pipe.move()
             if pipe.collide(bird):
                 pass
             if pipe.x + pipe.PIPE_TOP.get_width() < 0:
@@ -192,14 +193,12 @@ def main():
                 add_pipe = True
                 
             
-            if add_pipe:
-                #score += 1
-                pipes.append(Pipe(700))
+        if add_pipe:
+            #score += 1
+            pipes.append(Pipe(700))
                 
-            for r in rem:
-                pipes.remove(r)
-            
-            pipe.move()
+        for r in rem:
+            pipes.remove(r)
             
         base.move()       
         draw_window(win, bird, pipes, base)
